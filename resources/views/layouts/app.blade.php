@@ -7,9 +7,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body class="bg-gray-100 min-h-screen">
-    <nav style="background:#1e3a8a;color:#fff;padding:1rem 2rem;box-shadow:0 2px 8px rgba(30,58,138,0.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;">
+    <nav style="background:#1e3a8a;color:#fff;padding:0.3rem 2rem 0.3rem 2rem;box-shadow:0 2px 8px rgba(30,58,138,0.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-top:0;">
         <div style="display:flex;align-items:center;gap:24px;">
-            <img src="{{ asset('favicon.ico') }}" alt="Logo" style="width:32px;height:32px;margin-right:12px;">
+            <img src="{{ asset('logo.png') }}" alt="Logo" style="height:100px;margin-right:12px;transform:scale(1.4);transition:transform 0.2s;">
             <span style="font-size:1.5rem;font-weight:bold;letter-spacing:1px;">Football Live</span>
         </div>
         <div style="display:flex;align-items:center;gap:18px;">
