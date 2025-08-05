@@ -1,0 +1,6 @@
+models:
+  - title: Claude 3 Haiku (OpenRouter)
+    provider: openrouter
+    model: anthropic/claude-3-haiku
+    apiKey: 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
+
