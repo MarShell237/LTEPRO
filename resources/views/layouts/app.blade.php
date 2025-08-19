@@ -1,207 +1,278 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="{{ app()->getLocale() }}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meilleur Code Promo</title>
-    <link rel="icon" type="image/png" href="{{ asset('ball-icon.png') }}">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    @yield('styles')
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ __('messages.title') }}</title>
+<link rel="icon" type="image/png" href="{{ asset('ball-icon.png') }}">
+<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" crossorigin="anonymous">
 
-    <style>
-        link[rel="icon"] {
-            transform: scale(12);
-        }
-        .carousel-section {
-        width: 100%;
-        max-width: 400px;
-        margin: auto;
-        padding: 10px;
-        }
+<style>
+/* Reset global */
+body, html { margin:0; padding:0; font-family: Arial, sans-serif; overflow-x:hidden; }
 
-        .carousel-container {
-        position: relative;
-        width: 100%;
-        height: 850px;
-        overflow: hidden;
-        border-radius: 15px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
+/* Navbar */
+nav {
+    background:#1e3a8a;
+    color:#fff;
+    padding:0.5rem 2.4rem;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    box-shadow:0 2px 8px rgba(30,58,138,0.1);
+    position: relative;
+}
+nav .logo img { height:60px; transition: transform 0.4s; transform:scale(3);}
+nav .nav-links { display:flex; gap:12px; align-items:center; flex-wrap:wrap; transition: all 0.3s ease-in-out; }
+nav .nav-links a { 
+    color:#fff; font-weight:600; font-size:1rem; padding:6px 12px; 
+    border-radius:6px; text-decoration:none; 
+    transition: all 0.3s ease; 
+}
+nav .nav-links a:hover { background:#2563eb; transform: translateY(-2px); }
+nav .nav-links a:active { transform: scale(0.95); }
+nav .nav-links a.active { background:#2563eb; color:#fff; }
+nav .nav-toggle { display:none; font-size:1.8rem; cursor:pointer; color:#fff; transition: transform 0.3s; }
+nav .nav-toggle:hover { transform: rotate(90deg); }
 
-        .carousel-images-wrapper {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        }
+/* Dropdown Bookmakers (mobile) */
+.dropdown-mobile { position: relative; display: none; }
+.dropdown-mobile button {
+    background:#2563eb;
+    color:#fff;
+    border:none;
+    padding:8px 12px;
+    font-weight:bold;
+    cursor:pointer;
+    border-radius:6px;
+    transition: background 0.3s, transform 0.2s;
+}
+.dropdown-mobile button:hover { background:#1d4ed8; transform: scale(1.05); }
 
-        .carousel-image {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: opacity 0.6s ease-in-out;
-        opacity: 0;
-        }
+.dropdown-mobile .dropdown-content {
+    display:none;
+    position:absolute;
+    top:100%;
+    left:0;
+    width:auto;
+    border-bottom-left-radius:10px;
+    border-bottom-right-radius:10px;
+    z-index:999;
+    animation: fadeIn 0.3s ease-in-out;
+}
+.dropdown-mobile .dropdown-content a {
+    display:block;
+    padding:10px;
+    color:#fff;
+    text-decoration:none;
+    font-weight:bold;
+    transition: background 0.3s ease, padding-left 0.2s;
+    font-size: 0.8rem;
+    width: 100%;
+}
+.dropdown-mobile .dropdown-content a:hover {
+    background:#2563eb;
+    padding-left:15px;
+}
 
-        .carousel-btn {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 30px;
-        font-weight: bold;
-        background-color: rgba(0,0,0,0.5);
-        color: white;
-        border: none;
-        padding: 10px;
-        cursor: pointer;
-        z-index: 2;
-        border-radius: 5px;
-        }
+/* Bookmakers inline (desktop) */
+.bookmakers-inline {
+    display:none;
+    padding:10px;
+    text-align:center;
+}
+.bookmakers-inline a {
+    display:inline-block;
+    margin:5px 10px;
+    padding:10px 18px;
+    border-radius:30px;
+    font-weight:bold;
+    text-decoration:none;
+    color:white;
+    transition: transform 0.3s ease, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+.bookmakers-inline a::after {
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:rgba(255,255,255,0.1);
+    transition: all 0.4s ease;
+}
+.bookmakers-inline a:hover::after { left:0; }
+.bookmakers-inline a:hover { transform: translateY(-3px) scale(1.05); box-shadow:0 6px 15px rgba(0,0,0,0.3); }
 
-        .carousel-btn-left {
-        left: 10px;
-        }
+/* Footer */
+footer {
+    background:#111;
+    color:#fff;
+    padding:50px 20px;
+    text-align:center;
+}
+footer h2 {
+    margin-bottom:25px;
+    font-size:1.8rem;
+    font-weight:bold;
+    color:#fff;
+    text-transform: uppercase;
+    letter-spacing:1px;
+}
+footer .bookmaker-btns {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:15px;
+}
+footer .bookmaker-btns a {
+    display:inline-block;
+    padding:12px 22px;
+    border-radius:30px;
+    font-weight:bold;
+    color:#fff;
+    text-decoration:none;
+    font-size:1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+footer .bookmaker-btns a::after {
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:rgba(255,255,255,0.1);
+    transition: all 0.4s ease;
+}
+footer .bookmaker-btns a:hover::after { left:0; }
+footer .bookmaker-btns a:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow:0 6px 18px rgba(255,255,255,0.3);
+}
 
-        .carousel-btn-right {
-        right: 10px;
-        }
+/* Animations */
+@keyframes fadeIn {
+    from { opacity:0; transform: translateY(-10px); }
+    to { opacity:1; transform: translateY(0); }
+}
 
-    </style>
+/* Responsive */
+@media(max-width:768px){
+    nav .nav-links { display:none; flex-direction:column; width:100%; background:#1e3a8a; position:absolute; top:100%; left:0; padding:10px 0; z-index:1000; border-radius:0 0 10px 10px; }
+    nav .nav-links.show { display:flex; animation: fadeIn 0.3s ease-in-out; }
+    nav .nav-links a { width:100%; text-align:center; padding:10px 0; }
+    nav .nav-toggle { display:block; }
+    nav .logo img{ transform:scale(1.4); padding:0 10px; }
+    .dropdown-mobile { display:block; }
+}
+
+/* Desktop : afficher inline et cacher dropdown */
+@media(min-width:992px){
+    .bookmakers-inline { display:block; }
+    .dropdown-mobile { display:none !important; }
+}
+</style>
 </head>
-<body class="bg-gray-100 min-h-screen" style="margin:0;padding:0;">
-   <nav style="background:#1e3a8a;color:#fff;padding:0.3rem 2rem;box-shadow:0 2px 8px rgba(30,58,138,0.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-top:0;">
-        <div style="display:flex;align-items:center;gap:24px;margin-left:22px;">
-            <img src="{{ asset('logo.png') }}" alt="Logo" style="height:100px;transform:scale(2.5);transition:transform 0.4s;">
-        </div>
+<body>
 
-        <div style="display:flex;align-items:center;gap:18px;">
-            @php
-                $navLinks = [    
-                    'news' => 'Code promo',
-                    'home' => 'Matchs',
-                    'calendar' => 'Calendrier',
-                    'leagues' => 'Classements',
-                ];
-            @endphp
+<!-- Navbar -->
+<nav>
+    <div class="logo"><img src="{{ asset('logo.png') }}" alt="Logo"></div>
 
-            @foreach($navLinks as $route => $label)
-                <a href="{{ route($route) }}"
-                    style="
-                        color:#fff;
-                        font-weight:600;
-                        font-size:1.1rem;
-                        padding:6px 16px;
-                        border-radius:6px;
-                        text-decoration:none;
-                        transition:background 0.2s;
-                        {{ request()->routeIs($route) ? 'background:#2563eb;color:#fff;' : '' }}
-                    ">
-                    {{ $label }}
+    <!-- Dropdown Mobile -->
+    <div class="dropdown-mobile">
+        <button id="dropdownBtn">{{ __('messages.nav.bookmakers') }} <i class="fa fa-caret-down"></i></button>
+        <div class="dropdown-content" id="dropdownContent">
+            @foreach(__('messages.bookmakers') as $key => $label)
+                <a href="{{ route('bookmaker.show', $key) }}" 
+                   style="background:{{ $loop->index == 0 ? '#0052cc' : ($loop->index == 1 ? '#ff9900' : ($loop->index == 2 ? '#008000' : ($loop->index == 3 ? '#ff4d4d' : ($loop->index == 4 ? '#222' : ($loop->index == 5 ? '#0066cc' : ($loop->index == 6 ? '#444' : '#9900cc')))))) }};">
+                   {{ $label }}
                 </a>
             @endforeach
         </div>
-
-        <div class="heure" style="font-size:2.0rem;margin-left: 0;">
-            Chargement...
-            <script>
-                function updateHeureLocale() {
-                    const heureElement = document.querySelector('.heure');
-                    const maintenant = new Date();
-                    const options = {
-                        hour: '2-digit',
-                        minute: '2-digit',
-                        second: '2-digit',
-                        hour12: false
-                    };
-                    const heureLocale = maintenant.toLocaleTimeString(undefined, options);
-                    heureElement.textContent = heureLocale;
-                }
-                setInterval(updateHeureLocale, 1000);
-                updateHeureLocale();
-            </script>
-        </div>
-    </nav>
-
-    <main class="container mx-auto p-4">
-        @yield('content')
-    </main>
-
-    <footer style="background-color: #111; color: #fff; padding: 40px 20px; text-align: center; font-family: Arial, sans-serif;">
-    <div style="max-width: 1200px; margin: 0 auto;">
-        <h2 style="margin-bottom: 20px;">Nos partenaires bookmakers</h2>
-        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-bottom: 30px;">
-        <a href="{{ route('bookmaker.show', '1xbet') }}" style="text-decoration: none; padding: 10px 20px; background-color: #0052cc; color: white; border-radius: 8px; font-weight: bold; transition: background-color 0.3s;">1XBET</a>
-        <a href="{{ route('bookmaker.show', 'melbet') }}" style="text-decoration: none; padding: 10px 20px; background-color: #ff9900; color: white; border-radius: 8px; font-weight: bold; transition: background-color 0.3s;">MELBET</a>
-        <a href="{{ route('bookmaker.show', 'betwinner') }}" style="text-decoration: none; padding: 10px 20px; background-color: #008000; color: white; border-radius: 8px; font-weight: bold; transition: background-color 0.3s;">BETWINNER</a>
-        <a href="{{ route('bookmaker.show', 'mostbet') }}" style="text-decoration: none; padding: 10px 20px; background-color: #ff4d4d; color: white; border-radius: 8px; font-weight: bold; transition: background-color 0.3s;">MOSTBET</a>
-        <a href="{{ route('bookmaker.show', 'megapari') }}" style="text-decoration: none; padding: 10px 20px; background-color: #222; color: white; border-radius: 8px; font-weight: bold; transition: background-color 0.3s;">MEGAPARI</a>
-        <a href="{{ route('bookmaker.show', 'betandyou') }}" style="text-decoration: none; padding: 10px 20px; background-color: #0066cc; color: white; border-radius: 8px; font-weight: bold; transition: background-color 0.3s;">BETANDYOU</a>
-        <a href="{{ route('bookmaker.show', 'linebet') }}" style="text-decoration: none; padding: 10px 20px; background-color: #444; color: white; border-radius: 8px; font-weight: bold; transition: background-color 0.3s;">LINEBET</a>
-        <a href="{{ route('bookmaker.show', 'paripesa') }}" style="text-decoration: none; padding: 10px 20px; background-color: #9900cc; color: white; border-radius: 8px; font-weight: bold; transition: background-color 0.3s;">PARIPESA</a>
-        </div>
-
-        </div>
-
-        <div style="margin-top: 20px;">
-        <p>Contactez-nous via :</p>
-        <p>Email : <a href="mailto:arielfodopfx@gmail.com" style="color: #4CAF50;">arielfodopfx@gmail.com</a></p>
-        <p>Télégram : <a href="https://t.me/tonchannel" target="_blank" style="color: #4CAF50;">@tonchannel</a></p>
-        </div>
-
-        <div style="margin-top: 30px; font-size: 14px; color: #aaa;">
-        © {{ date('Y') }} Ariel Fodop | Tous droits réservés.
-        </div>
     </div>
-    </footer>
 
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-links">
+        @php $navLinks = ['news','home','calendar','leagues']; @endphp
+        @foreach($navLinks as $route)
+            <a href="{{ route($route) }}" class="{{ request()->routeIs($route)?'active':'' }}">
+                {{ __('messages.nav.'.$route) }}
+            </a>
+        @endforeach
+        <a href="/Bonus" style="color:yellow;"><i class="fa fa-gift"></i> {{ __('messages.nav.bonus') }}</a>
+    </div>
+</nav>
 
-    <script>
-    const images = document.querySelectorAll('.carousel-image');
-    const prevBtn = document.getElementById('carouselPrev');
-    const nextBtn = document.getElementById('carouselNext');
-    let currentIndex = 0;
-    let autoSlideInterval;
+<!-- Bookmakers inline (desktop) -->
+<div class="bookmakers-inline">
+    @foreach(__('messages.bookmakers') as $key => $label)
+        <a href="{{ route('bookmaker.show', $key) }}" 
+           style="background:{{ $loop->index == 0 ? '#0052cc' : ($loop->index == 1 ? '#ff9900' : ($loop->index == 2 ? '#008000' : ($loop->index == 3 ? '#ff4d4d' : ($loop->index == 4 ? '#222' : ($loop->index == 5 ? '#0066cc' : ($loop->index == 6 ? '#444' : '#9900cc')))))) }};">
+           {{ $label }}
+        </a>
+    @endforeach
+</div>
 
-    function showImage(index) {
-        images.forEach((img, i) => {
-        img.style.opacity = (i === index) ? '1' : '0';
-        });
-        currentIndex = index;
+<!-- Main content -->
+<main class="container mx-auto p-4">
+    @yield('content')
+</main>
+
+<!-- Footer -->
+<footer>
+    <h2>{{ __('messages.footer.partners') }}</h2>
+    <div class="bookmaker-btns">
+        @foreach(__('messages.bookmakers') as $key => $label)
+            <a href="{{ route('bookmaker.show', $key) }}" 
+               style="background:{{ $loop->index == 0 ? '#0052cc' : ($loop->index == 1 ? '#ff9900' : ($loop->index == 2 ? '#008000' : ($loop->index == 3 ? '#ff4d4d' : ($loop->index == 4 ? '#222' : ($loop->index == 5 ? '#0066cc' : ($loop->index == 6 ? '#444' : '#9900cc')))))) }};">
+               {{ $label }}
+            </a>
+        @endforeach
+    </div>
+</footer>
+
+<script>
+// Navbar toggle
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+navToggle.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    navLinks.classList.toggle('show');
+});
+
+// Dropdown Bookmakers
+const dropdownBtn = document.getElementById('dropdownBtn');
+const dropdownContent = document.getElementById('dropdownContent');
+
+dropdownBtn.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+});
+
+// Fermer dropdown si clic ailleurs
+document.addEventListener('click', (e)=>{
+    if(!dropdownBtn.contains(e.target) && !dropdownContent.contains(e.target)){
+        dropdownContent.style.display = 'none';
     }
+});
 
-    function showNextImage() {
-        const nextIndex = (currentIndex + 1) % images.length;
-        showImage(nextIndex);
+// Fermer nav-links si clic ailleurs
+document.addEventListener('click', (e)=>{
+    if(navLinks.classList.contains('show') && !navLinks.contains(e.target) && !navToggle.contains(e.target)){
+        navLinks.classList.remove('show');
     }
-
-    function showPrevImage() {
-        const prevIndex = (currentIndex - 1 + images.length) % images.length;
-        showImage(prevIndex);
-    }
-
-    prevBtn.addEventListener('click', () => {
-        showPrevImage();
-        resetAutoSlide();
-    });
-
-    nextBtn.addEventListener('click', () => {
-        showNextImage();
-        resetAutoSlide();
-    });
-
-    function startAutoSlide() {
-        autoSlideInterval = setInterval(showNextImage, 6000); // 6 secondes
-    }
-
-    function resetAutoSlide() {
-        clearInterval(autoSlideInterval);
-        startAutoSlide();
-    }
-
-    // Démarrer automatiquement au chargement
-    showImage(0);
-    startAutoSlide();
-    </script>
+});
+</script>
 
 </body>
 </html>

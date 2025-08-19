@@ -86,12 +86,13 @@ document.body.classList.add('football-bg');
 @endif
 <div class="leagues-grid">
     @forelse($leagues['competitions'] ?? [] as $league)
+    <a href="{{ route('leagues.standings', $league['id']) }}" class="league-link" style="text-decoration:none;">
         <div class="league-card">
             <img src="{{ $league['emblem'] ?? $league['area']['flag'] ?? '' }}" alt="{{ $league['name'] }}" class="league-logo">
             <div class="league-name">{{ $league['name'] }}</div>
-            <div class="league-country">{{ $league['area']['name'] }}</div>
-            <a href="{{ route('leagues.standings', $league['id']) }}" class="league-link">Voir classement</a>
+            <div class="league-country">{{ $league['area']['name'] }}</div>Voir classement
         </div>
+    </a>
     @empty
         <p style="color:#fff;font-size:1.2rem;">Aucune ligue disponible.</p>
     @endforelse

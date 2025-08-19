@@ -69,7 +69,11 @@ body.football-bg {
   padding: 1.2rem;
   margin-top: 2rem;
   box-shadow: 0 4px 24px rgba(30,58,138,0.15);
-  text-align: center;
+  text-align: left;
+  width: 400px;
+  height: auto;
+  margin-left:-110px;
+  margin-bottom: 120px;
 }
 .promo-banner h3 {
   color: #1e3a8a;
@@ -77,13 +81,100 @@ body.football-bg {
   margin-bottom: 0.5rem;
 }
 .promo-banner p {
-  font-size: 1rem;
+  font-size: 1rem; 
   color: #333;
 }
-.promo-banner img {
-  width: 70px;
-  margin-top: 1rem;
-}
+
+     /* Animation effet machine à écrire */
+    .animated-text {
+        font-size: 1.5rem;
+        font-weight: bold;
+        width: 100%;
+        padding: 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 2px solid;
+        animation: typing 5s steps(50, end), blink .7s step-end infinite;
+        text-align: center;
+    }
+
+    @keyframes typing {
+        from { width: 0 }
+        to { width: 100% }
+    }
+
+    @keyframes blink {
+        from, to { border-color: transparent }
+        50% { border-color: black }
+    }
+
+    /* Bouton */
+    .copy-btn {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background: #2563eb;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1rem;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        transition: background 0.3s ease;
+    }
+
+    .copy-btn:hover {
+        background: #1d4ed8;
+    }
+
+    @media(max-width: 768px) {
+    h1 {
+      font-size: 1.8rem !important;
+      margin-left: 0 !important;
+      text-align: center;
+    }
+    .promo-banner {
+      margin: auto;
+      width: 90%;
+      text-align: left;
+
+    }
+
+    .text{
+      width: 50%;
+      height: 100px;
+      transform:scale(0.5);
+      max-width: 520px;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 1rem;
+      padding: 0;
+      margin-top: 1rem;
+      box-shadow: 0 4px 24px rgba(30,58,138,0.15);
+    }
+    .animated-text{
+      font: size 1.1em;
+      margin-left:-12px;
+    }
+    .copy-btn{
+      transform:scale(1.6);
+      height: 40px;
+    }
+    .section-flex {
+      flex-direction: column;
+      align-items: center;
+    }
+    .right {
+      text-align: center;
+      margin: auto !important;
+      margin-right:-7000px;
+    }
+    .photo{
+      margin-top: 10px;
+      margin-left:-100px;
+    }
+  }
+   
 </style>
 
 <script>
@@ -93,19 +184,33 @@ body.football-bg {
 <div class="football-ball"></div>
 <div class="container">
 
-  <h1 style="color:#fff;text-shadow:2px 2px 8px #2563eb;font-size:2.5rem;font-weight:bold;margin-bottom:1.5rem;">
-    Code promo
+  <h1 style="color:#fff;text-shadow:2px 2px 8px #2563eb;font-size:2.5rem;font-weight:bold;margin-bottom:1.5rem; margin-left: -110px;">
+    Comment ça marche ?
   </h1>
 
   <!-- Bannière publicitaire principale -->
-  <div class="promo-banner">
-      <h1> Code Promo Exclusif : <span style="color:#dc2626;font-weight:bold;font-size:2rem;">BM40</span></h1>
-      <p style="font-size: 20px;">Utilisez le code <strong style="color:#dc2626;font-weight:bold;">BM40</strong> sur <strong>1XBET,BETWINNER,MOSTBET,MEGAPARI,BETANDYOU,PARIPESA</strong> et d'autres partenaires pour obtenir des <strong>bonus de bienvenue exceptionnels</strong> !</p><hr>
-      <p style="font-size: 20px;">Pour <strong>MELBET</strong>, utilisez le code <strong style="color:#dc2626;font-weight:bold;">RUSSE7</strong>. Et benéficiez de 200% de bonus lors de votre premiere recharge.</p><hr>
-      <P style="font-size: 20px;">Pour <strong>LINEBET</strong>, utilisez le code <strong style="color:#dc2626;font-weight:bold;">DEL50</strong>. Et en cas de pertes beneficiez de 50% de remboursement.</P>
-      <img src="{{ asset('logo.png') }}" alt="Logo BM40" style="width:10%;margin-top:1rem;background-color:black;">
+  <div class="promo-banner ">
+     
+      <p style="font-size: 20px;"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> Choisissez le code promo LTE56 pour toute catégorie qui vous intéresse</p>
+      <p style="font-size: 20px;"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i>Pour  Saisissez le montant des fonds bonus et appuyez sur le bouton « Obtenir le code »</p>
+      <P style="font-size: 20px;"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> Placez un pari et attendez votre gain !</P>
+      <a href="news/detail" style="text-decoration:none; color:#2563eb; font-size:1.2rem;"><p style="font-size: 20px;color:#2563eb;"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i>Cliquez ici pour en savoir plus sur comment ça marche.</p></a>
+      <a href="news/LTE56" style="text-decoration:none; color:#2563eb; font-size:1.2rem;"><p style="font-size: 20px;color:#2563eb;"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i>Cliquez ici pour plus savoir sur les avantages du code promo LTE56</p></a>
   </div>
 
+  <div class="text" style="margin-left: -110px; width: 500px;background: rgba(255, 255, 255, 0.85); border-radius: 1rem; padding: 1.2rem; margin-top: 2rem; box-shadow: 0 4px 24px rgba(30,58,138,0.15);">
+     
+    <div class="animated-text">
+        Active ton bonus avec le code promo <span style="color:#2563eb; font-size:25px;">LTE56</span>
+    </div>
+      <button class="copy-btn" onclick="copyText()" style="margin-left: 40%;">Copier <i class="fa fa-clone" aria-hidden="true"></i></button>
+  </div>
+  
+  <div class="right" style="margin-left: 700px; margin-top: -260px;">
+    <h1 style="color: white; ">JOUEZ AVEZ LE MEILLEUR</h1>
+    <h1 style="color: white; margin-left: 110px;">CODE PROMO</h1>
+    <img src="../logo.png"  alt="logo" class="photo" style="margin-top:-200px;">
+ </div>
   <!-- Affichage des actualités -->
   <div class="news-grid">
       @forelse($news as $index => $item)
@@ -129,4 +234,16 @@ body.football-bg {
       @endforelse
   </div>
 </div>
+
+<script>
+    function copyText() {
+        let text = "LTE56"; // Seul ce mot sera copié
+        navigator.clipboard.writeText(text).then(() => {
+            alert("Code promo copié avec succès !");
+        }).catch(err => {
+            console.error("Erreur de copie", err);
+        });
+    }
+</script>
+
 @endsection

@@ -3,24 +3,15 @@
 @section('content')
 
 <style>
-  /* Styles communs */
+  /* Animation pulse */
   @keyframes pulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(30,144,255, 0.7);
-    }
-    70% {
-        box-shadow: 0 0 0 10px rgba(30,144,255, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(30,144,255, 0);
-    }
-    }
-
-    .presentation {
-    animation: pulse 3s infinite;
-    }
+    0% { box-shadow: 0 0 0 0 rgba(30,144,255, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(30,144,255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(30,144,255, 0); }
+  }
 
   .presentation {
+    animation: pulse 3s infinite;
     display: flex;
     flex-wrap: wrap;
     background: {{ $background }};
@@ -49,7 +40,6 @@
     letter-spacing: 1px;
   }
 
-  /* La couleur highlight peut aussi être dynamique */
   .highlight {
     color: 
       @if($slug === '1xbet') #1e90ff
@@ -71,6 +61,7 @@
 
   .promo-box {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     background: black;
     border-radius: 12px;
@@ -80,10 +71,8 @@
     font-size: 1.1rem;
     box-shadow: 0 2px 8px rgba(30,144,255,0.08);
   }
-  .promo-label {
-    font-weight: 600;
-    color: #fff;
-  }
+
+  .promo-label { font-weight: 600; color: #fff; }
   .promo-code {
     font-family: 'Courier New', Courier, monospace;
     font-size: 1.25rem;
@@ -97,6 +86,7 @@
     box-shadow: 0 1px 4px rgba(30,144,255,0.10);
     transition: background 0.2s;
   }
+
   .copy-btn {
     background: #1e90ff;
     color: #fff;
@@ -109,6 +99,7 @@
     transition: background 0.2s, box-shadow 0.2s;
     box-shadow: 0 2px 8px rgba(30,144,255,0.10);
   }
+
   .copy-btn:hover, .copy-btn.copied {
     background: #0a2e73;
     color: #fff;
@@ -128,6 +119,7 @@
     box-shadow: 0 4px 16px rgba(30,144,255,0.18);
     transition: background 0.2s, transform 0.2s;
   }
+
   .cta-btn:hover {
     background: linear-gradient(90deg, #0a2e73 60%, #1e90ff 100%);
     transform: translateY(-2px) scale(1.04);
@@ -140,6 +132,7 @@
     align-items: center;
     min-width: 180px;
   }
+
   .app-image {
     max-width: 180px;
     width: 100%;
@@ -147,6 +140,34 @@
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
     background: #2a06ca;
     padding: 10px;
+  }
+
+  /* --- Responsive --- */
+  @media(max-width: 1024px) {
+    .presentation { padding: 30px 20px; gap: 20px; }
+    .presentation-content h1 { font-size: 2rem; }
+    .desc { font-size: 1.05rem; }
+    .cta-btn { font-size: 1rem; padding: 10px 28px; }
+    .app-image { max-width: 150px; }
+  }
+
+  @media(max-width: 768px) {
+    .presentation { flex-direction: column; padding: 25px 20px; gap: 18px; width: 90%; margin-left:-10px; }
+    .presentation-content h1 { font-size: 1.75rem; text-align: center; width: 90%; }
+    .desc { font-size: 1rem; text-align: center; }
+    .promo-box { justify-content: center; }
+    .cta-btn { display: block; margin: 0 auto; }
+    .app-image { max-width: 140px; margin-top: 10px; }
+  }
+
+  @media(max-width: 480px) {
+    .presentation { padding: 20px 20px; gap: 15px; }
+    .presentation-content h1 { font-size: 1.5rem; }
+    .desc { font-size: 0.95rem; }
+    .promo-box { flex-direction: column; font-size: 0.95rem; padding: 8px 12px; }
+    .promo-code { margin: 4px 0; }
+    .cta-btn { font-size: 1rem; padding: 10px 20px; }
+    .app-image { max-width: 120px; }
   }
 </style>
 
@@ -159,31 +180,12 @@
       <span class="promo-code" id="promoCode">{{ $bookmaker['code'] }}</span>
       <button class="copy-btn" onclick="copyPromoCode()">Copier</button>
     </div>
-    <a href="{{ $bookmaker['link'] }}" class="cta-btn" target="_blank">Telechagez l'appli ou regardez les cotes</a>
+    <a href="{{ $bookmaker['link'] }}" class="cta-btn" target="_blank">Telechargez l'appli ou regardez les cotes</a>
   </div>
   <div class="presentation-image">
     <img src="{{ asset('logo.png') }}" alt="{{ $bookmaker['name'] }} logo" class="app-image" />
   </div>
-
-
-
 </section>
-
-  <!-- Carrousel à droite -->
-<div class="carousel-section">
-  <div class="carousel-container">
-    <button class="carousel-btn carousel-btn-left" id="carouselPrev" aria-label="Image précédente">&#10094;</button>
-    
-    <div class="carousel-images-wrapper">
-      <img class="carousel-image" src="{{ asset('../1.png') }}" alt="Capture 1" style="opacity:1;">
-      <img class="carousel-image" src="{{ asset('../2.png') }}" alt="Capture 2" style="opacity:0;">
-      <img class="carousel-image" src="{{ asset('../3.png') }}" alt="Capture 3" style="opacity:0;">
-      <img class="carousel-image" src="{{ asset('../4.png') }}" alt="Capture 4" style="opacity:0;">
-    </div>
-    
-    <button class="carousel-btn carousel-btn-right" id="carouselNext" aria-label="Image suivante">&#10095;</button>
-  </div>
-</div>
 
 <script>
   function copyPromoCode() {

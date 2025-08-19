@@ -1,8 +1,14 @@
 @extends('layouts.app')
 @section('content')
 <style>
+body {
+  background:#1f3e93;
+  min-height: 100vh;
+  position: relative;
+}
+
 .calendar-day {
-  background: rgba(255,255,255,0.97);
+  background: #1f3e93;
   border-radius: 1.2rem;
   box-shadow: 0 4px 24px rgba(30,58,138,0.13);
   padding: 1.5rem 1rem;
@@ -11,7 +17,7 @@
 .calendar-date {
   font-size: 1.3rem;
   font-weight: bold;
-  color: #2563eb;
+  color: #eaedf1ff;
   margin-bottom: 1rem;
 }
 .calendar-matches {
