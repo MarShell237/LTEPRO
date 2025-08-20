@@ -153,7 +153,7 @@ body.football-bg {
       box-shadow: 0 4px 24px rgba(30,58,138,0.15);
     }
     .animated-text{
-      font: size 1.1em;
+      font-size: 1.43rem;
       margin-left:-12px;
     }
     .copy-btn{
@@ -170,8 +170,9 @@ body.football-bg {
       margin-right:-7000px;
     }
     .photo{
-      margin-top: 10px;
-      margin-left:-100px;
+      margin-top: 5px;
+      margin-left:-90px;
+      transform:scale(0.8);
     }
   }
    
@@ -191,22 +192,22 @@ body.football-bg {
   <!-- Bannière publicitaire principale -->
   <div class="promo-banner ">
      
-      <p style="font-size: 20px;"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> Choisissez le code promo LTE56 pour toute catégorie qui vous intéresse</p>
+      <p style="font-size: 20px;"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> Choisissez le code promo LTEPRO pour toute catégorie qui vous intéresse</p>
       <p style="font-size: 20px;"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i>Pour  Saisissez le montant des fonds bonus et appuyez sur le bouton « Obtenir le code »</p>
       <P style="font-size: 20px;"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> Placez un pari et attendez votre gain !</P>
       <a href="news/detail" style="text-decoration:none; color:#2563eb; font-size:1.2rem;"><p style="font-size: 20px;color:#2563eb;"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i>Cliquez ici pour en savoir plus sur comment ça marche.</p></a>
-      <a href="news/LTE56" style="text-decoration:none; color:#2563eb; font-size:1.2rem;"><p style="font-size: 20px;color:#2563eb;"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i>Cliquez ici pour plus savoir sur les avantages du code promo LTE56</p></a>
+      <a href="news/LTEPRO" style="text-decoration:none; color:#2563eb; font-size:1.2rem;"><p style="font-size: 20px;color:#2563eb;"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i>Cliquez ici pour plus savoir sur les avantages du code promo LTEPRO</p></a>
   </div>
 
-  <div class="text" style="margin-left: -110px; width: 500px;background: rgba(255, 255, 255, 0.85); border-radius: 1rem; padding: 1.2rem; margin-top: 2rem; box-shadow: 0 4px 24px rgba(30,58,138,0.15);">
+  <div class="text" style="margin-left: -110px; width: 500px;background: rgba(255, 255, 255, 0.85); border-radius: 1rem; padding: 1.2rem; margin-bottom: 15rem; box-shadow: 0 4px 24px rgba(30,58,138,0.15);">
      
     <div class="animated-text">
-        Active ton bonus avec le code promo <span style="color:#2563eb; font-size:25px;">LTE56</span>
+        Active ton bonus avec le code promo <span style="color:#2563eb; font-size:25px;">LTEPRO</span>
     </div>
       <button class="copy-btn" onclick="copyText()" style="margin-left: 40%;">Copier <i class="fa fa-clone" aria-hidden="true"></i></button>
   </div>
   
-  <div class="right" style="margin-left: 700px; margin-top: -260px;">
+  <div class="right" style="margin-left: 700px; margin-top: -700px;">
     <h1 style="color: white; ">JOUEZ AVEZ LE MEILLEUR</h1>
     <h1 style="color: white; margin-left: 110px;">CODE PROMO</h1>
     <img src="../logo.png"  alt="logo" class="photo" style="margin-top:-200px;">
@@ -237,7 +238,7 @@ body.football-bg {
 
 <script>
     function copyText() {
-        let text = "LTE56"; // Seul ce mot sera copié
+        let text = "LTEPRO"; // Seul ce mot sera copié
         navigator.clipboard.writeText(text).then(() => {
             alert("Code promo copié avec succès !");
         }).catch(err => {

@@ -24,7 +24,7 @@ nav {
     box-shadow:0 2px 8px rgba(30,58,138,0.1);
     position: relative;
 }
-nav .logo img { height:60px; transition: transform 0.4s; transform:scale(3);}
+nav .logo img { height:60px; transition: transform 0.4s; margin-left:80px;transform:scale(5);}
 nav .nav-links { display:flex; gap:12px; align-items:center; flex-wrap:wrap; transition: all 0.3s ease-in-out; }
 nav .nav-links a { 
     color:#fff; font-weight:600; font-size:1rem; padding:6px 12px; 
@@ -170,7 +170,7 @@ footer .bookmaker-btns a:hover {
     nav .nav-links.show { display:flex; animation: fadeIn 0.3s ease-in-out; }
     nav .nav-links a { width:100%; text-align:center; padding:10px 0; }
     nav .nav-toggle { display:block; }
-    nav .logo img{ transform:scale(1.4); padding:0 10px; }
+    nav .logo img{ transform:scale(2.4); margin-left:7px;  }
     .dropdown-mobile { display:block; }
 }
 
@@ -185,7 +185,7 @@ footer .bookmaker-btns a:hover {
 
 <!-- Navbar -->
 <nav>
-    <div class="logo"><img src="{{ asset('logo.png') }}" alt="Logo"></div>
+    <div class="logo"><a href="/"><img src="{{ asset('logo.png') }}" alt="Logo"></a></div>
 
     <!-- Dropdown Mobile -->
     <div class="dropdown-mobile">

@@ -18,7 +18,7 @@
                             1 => "Cliquez sur le lien dans le site et téléchargez l'application",
                             2 => "Cliquez sur \"S’inscrire\".",
                             3 => "Remplissez le formulaire.",
-                            4 => "Rassurez-vous d'avoir saisi LTE56 comme code promo et validez."
+                            4 => "Rassurez-vous d'avoir saisi LTEPRO comme code promo et validez."
                         ];
                     @endphp
                     <p style="font-size: 14px;">{{ $texte[$i] }}</p>
@@ -40,7 +40,7 @@
                             1 => "Ouvrez l'application de votre bookmaker actuel.",
                             2 => "Allez dans le menu Profil ou Paramètres.",
                             3 => "Sélectionnez l'option Se déconnecter et confirmez.",
-                            4 => "Revenez à l'inscription et saisissez LTE56 comme code promo."
+                            4 => "Revenez à l'inscription et saisissez LTEPRO comme code promo."
                         ];
                     @endphp
                     <p style="font-size: 14px;">{{ $texte[$i] }}</p>
