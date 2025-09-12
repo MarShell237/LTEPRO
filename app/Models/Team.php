@@ -11,10 +11,10 @@ class Team extends Model
     public function players() { return $this->hasMany(\App\Models\Player::class); }
 
     // Relation avec les matchs à domicile
-    public function matchesHome() { return $this->hasMany(\App\Models\Match::class, 'home_team_id'); }
+    public function matchesHome() { return $this->hasMany(\App\Models\Fixture::class, 'home_team_id'); }
 
     // Relation avec les matchs à l'extérieur
-    public function matchesAway() { return $this->hasMany(\App\Models\Match::class, 'away_team_id'); }
+    public function matchesAway() { return $this->hasMany(\App\Models\Fixture::class, 'away_team_id'); }
 
     // Relation avec la ligue
     public function league() { return $this->belongsTo(League::class); }

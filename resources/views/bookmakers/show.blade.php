@@ -74,8 +74,8 @@
 
 <!-- {{-- SECTION CARROUSEL --}} -->
 
-@php
-  // ✅ Utiliser directement le slug passé par le contrôleur
+<!-- @php
+  // Utiliser directement le slug passé par le contrôleur
   $bannierePath = "bannieres/banniere_{$slug}";
   $bannieres = [
       asset("$bannierePath/1.jpg"),
@@ -83,11 +83,11 @@
       asset("$bannierePath/3.jpg"),
       asset("$bannierePath/4.jpg"),
   ];
-@endphp
+@endphp -->
 
 
 
-<div class="carousel-container">
+<!-- <div class="carousel-container">
   <div class="carousel" id="carousel">
     @foreach($bannieres as $banniere)
       <img src="{{ $banniere }}" alt="Bannière {{ $bookmaker['name'] }}">
@@ -98,7 +98,7 @@
       <div class="indicator {{ $index === 0 ? 'active' : '' }}" data-index="{{ $index }}"></div>
     @endforeach
   </div>
-</div>
+</div> -->
 
 <script>
   function copyPromoCode() {

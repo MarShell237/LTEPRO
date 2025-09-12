@@ -41,42 +41,40 @@
         color: #f7f8faff;
     }
 
+    /* Section promo */
+    .promo-users-container {
+        border-radius: 1rem;
+        margin: 30px auto;
+        width: 50%;
+        background: #111f3e;
+        padding: 20px;
+        box-shadow: 0 4px 24px rgba(30, 58, 138, 0.2);
+        text-align: center;
+    }
+
+    .promo-users-container h2 {
+        color: #f9fafc;
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
+
+    .promo-users-container p {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #00e676;
+    }
+
     /* Responsive */
     @media (max-width: 1024px) {
-        .bonus-container {
-            width: 70%;
-        }
+        .bonus-container, .promo-users-container { width: 70%; }
     }
-
     @media (max-width: 768px) {
-        .bonus-container {
-            width: 90%;
-            margin: 20px auto;
-            padding: 15px;
-        }
-        .bonus-body h1 {
-            font-size: 1.5rem;
-        }
-        .bonus-footer p {
-            font-size: 0.9rem;
-        }
+        .bonus-container, .promo-users-container { width: 90%; margin: 20px auto; padding: 15px; }
+        .bonus-body h1, .promo-users-container p { font-size: 1.5rem; }
     }
-
     @media (max-width: 480px) {
-        .bonus-container {
-            width: 95%;
-            margin: 20px auto;
-            padding: 10px;
-        }
-        .bonus-header h1 {
-            font-size: 1.2rem;
-        }
-        .bonus-body h1 {
-            font-size: 1.2rem;
-        }
-        .bonus-footer p {
-            font-size: 0.85rem;
-        }
+        .bonus-container, .promo-users-container { width: 95%; margin: 20px auto; padding: 10px; }
+        .bonus-header h1, .bonus-body h1, .promo-users-container p { font-size: 1.2rem; }
     }
 </style>
 
@@ -96,7 +94,14 @@
     </div>
 </div>
 
+<!-- Nouvelle section: utilisateurs promo -->
+<div class="promo-users-container">
+    <h2>Nombre de parieurs utilisant le code LTEPRO:</h2>
+    <p id="promo-users-count">201,587</p>
+</div>
+
 <script>
+    // Animation bonus existante
     function getRandomBonus() {
         return Math.floor(Math.random() * (100000000 - 99000 + 1)) + 99000;
     }
@@ -128,6 +133,18 @@
     }
 
     updateBonus();
+
+    // Animation compteur promo (incrémente chaque jour)
+    const promoElement = document.getElementById('promo-users-count');
+    let baseCount = 201587; // valeur initiale
+    function updatePromoUsers() {
+        const today = new Date();
+        const startDate = new Date("2025-08-25"); // date de départ
+        const daysElapsed = Math.floor((today - startDate) / (1000*60*60*24));
+        const currentCount = baseCount + daysElapsed;
+        promoElement.textContent = currentCount.toLocaleString();
+    }
+    updatePromoUsers();
 </script>
 
 @endsection

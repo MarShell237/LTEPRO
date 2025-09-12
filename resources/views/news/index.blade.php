@@ -2,6 +2,10 @@
 @section('content')
 
 <style>
+.container{
+  margin: 0 auto;
+  padding-left: 2rem;
+}
 body.football-bg {
   background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
   min-height: 100vh;
@@ -87,7 +91,7 @@ body.football-bg {
 
      /* Animation effet machine à écrire */
     .animated-text {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         font-weight: bold;
         width: 100%;
         padding: 10px;
@@ -129,6 +133,10 @@ body.football-bg {
     }
 
     @media(max-width: 768px) {
+      .container{
+        margin: 0 auto;
+        padding-left: 1rem;
+      }
     h1 {
       font-size: 1.8rem !important;
       margin-left: 0 !important;
@@ -224,8 +232,8 @@ body.football-bg {
           {{-- Pub intermédiaire tous les 3 actus --}}
           @if(($index + 1) % 3 === 0)
               <div class="promo-banner" style="grid-column: span 2;">
-                  <h3>Ne manquez pas votre bonus avec <span style="color:#dc2626;">BM40</span></h3>
-                  <p>Profitez dès maintenant des meilleurs bookmakers avec le code <strong>BM40</strong>.</p>
+                  <h3>Ne manquez pas votre bonus avec <span style="color:#dc2626;">LTEPRO</span></h3>
+                  <p>Profitez dès maintenant des meilleurs bookmakers avec le code <strong>LTEPRO</strong>.</p>
                   <a href="/bookmakers/1xbet" style="display:inline-block;margin-top:0.8rem;background:#2563eb;color:#fff;padding:0.4rem 1rem;border-radius:6px;text-decoration:none;">Je m'inscris</a>
               </div>
           @endif

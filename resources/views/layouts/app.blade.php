@@ -157,6 +157,18 @@ footer .bookmaker-btns a:hover {
     transform: translateY(-4px) scale(1.05);
     box-shadow:0 6px 18px rgba(255,255,255,0.3);
 }
+footer .contact {
+    margin-top:40px;
+    font-size:1rem;
+    line-height:1.8;
+}
+footer .contact a {
+    color:#4da6ff;
+    text-decoration:none;
+}
+footer .contact a:hover {
+    text-decoration:underline;
+}
 
 /* Animations */
 @keyframes fadeIn {
@@ -166,11 +178,14 @@ footer .bookmaker-btns a:hover {
 
 /* Responsive */
 @media(max-width:768px){
+    nav{
+        padding-left: -20px;
+    }
     nav .nav-links { display:none; flex-direction:column; width:100%; background:#1e3a8a; position:absolute; top:100%; left:0; padding:10px 0; z-index:1000; border-radius:0 0 10px 10px; }
     nav .nav-links.show { display:flex; animation: fadeIn 0.3s ease-in-out; }
     nav .nav-links a { width:100%; text-align:center; padding:10px 0; }
     nav .nav-toggle { display:block; }
-    nav .logo img{ transform:scale(2.4); margin-left:7px;  }
+    nav .logo img{ transform:scale(2.4); margin-left:7px; padding-right: 12px; }
     .dropdown-mobile { display:block; }
 }
 
@@ -237,6 +252,13 @@ footer .bookmaker-btns a:hover {
                {{ $label }}
             </a>
         @endforeach
+    </div>
+
+    <!-- Contact Info -->
+    <div class="contact">
+        <p><i class="fab fa-telegram"></i> Contact télégramme : <a href="https://t.me/tfahaku" target="_blank">@tfahaku</a></p>
+        <p><i class="fab fa-telegram-plane"></i> Canal télégramme : <a href="https://t.me/+rJcDGHDmoQ81YmI0" target="_blank">Rejoindre</a></p>
+        <p><i class="fab fa-whatsapp"></i> WhatsApp : <a href="https://wa.me/237652200972" target="_blank">+237 6 52 20 09 72</a></p>
     </div>
 </footer>
 
